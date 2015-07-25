@@ -1,10 +1,16 @@
 # fuzzy
 
-Fuzzy string search in Haskell. Uses `Data.TextualMonoid`
+Fuzzy string search library in Haskell. Uses `Data.TextualMonoid`
 from [monoid-subclasses](https://hackage.haskell.org/package/monoid-subclasses)
 to be able to run on different types of strings.
 
 Ported from the JavaScript equivalent [mattyork/fuzzy](https://github.com/mattyork/fuzzy).
+
+## Installation
+
+```
+cabal install fuzzy
+```
 
 ## Usage
 

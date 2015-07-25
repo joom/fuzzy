@@ -1,5 +1,7 @@
 {-# LANGUAGE FlexibleContexts #-}
 
+-- | Fuzzy string search in Haskell.
+-- Uses 'TextualMonoid' to be able to run on different types of strings.
 module Text.Fuzzy where
 
 import Prelude hiding (filter)
