@@ -35,6 +35,7 @@ data (T.TextualMonoid s) => Fuzzy t s =
 -- >>> match "hsk" ("Haskell",1995) "<" ">" fst False
 -- Just ("<h>a<s><k>ell",5)
 --
+{-# INLINABLE match #-}
 match :: (T.TextualMonoid s)
       => s        -- ^ Pattern.
       -> t        -- ^ The value containing the text to search in.
@@ -70,6 +71,7 @@ match pattern t pre post extract caseSensitive =
 --
 -- >>> filter "ML" [("Standard ML", 1990),("OCaml",1996),("Scala",2003)] "<" ">" fst False
 -- [Fuzzy {original = ("Standard ML",1990), rendered = "standard <m><l>", score = 4},Fuzzy {original = ("OCaml",1996), rendered = "oca<m><l>", score = 4}]
+{-# INLINABLE filter #-}
 filter :: (T.TextualMonoid s)
        => s        -- ^ Pattern.
        -> [t]      -- ^ The list of values containing the text to search in.
@@ -88,6 +90,7 @@ filter pattern ts pre post extract caseSen =
 --
 -- >>> simpleFilter "vm" ["vim", "emacs", "virtual machine"]
 -- ["vim","virtual machine"]
+{-# INLINABLE simpleFilter #-}
 simpleFilter :: (T.TextualMonoid s)
              => s   -- ^ Pattern to look for.
              -> [s] -- ^ List of texts to check.
