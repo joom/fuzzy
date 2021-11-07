@@ -65,7 +65,10 @@ match pattern t pre post extract caseSensitive =
                   let cur' = cur * 2 + 1 in
                   (tot + cur', cur', res <> pre <> T.singleton c <> post, xs)
                 else (tot, 0, res <> T.singleton c, pat)
-        ) (0, 0, mempty, pattern') s'
+        ) ( 0 
+          , 1  -- reward prefix matching
+          , mempty
+          , pattern') s'
 
 -- | The function to filter a list of values by fuzzy search on the text extracted from them.
 --
