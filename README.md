@@ -22,10 +22,10 @@ cabal install fuzzy
 Just ("infinite",3)
 
 > match "hsk" ("Haskell",1995) "<" ">" fst False
-Just ("<h>a<s><k>ell",5)
+Just ("<H>a<s><k>ell",5)
 
 > filter "ML" [("Standard ML", 1990),("OCaml",1996),("Scala",2003)] "<" ">" fst False
-[Fuzzy {original = ("Standard ML",1990), rendered = "standard <m><l>", score = 4},Fuzzy {original = ("OCaml",1996), rendered = "oca<m><l>", score = 4}]
+[Fuzzy {original = ("Standard ML",1990), rendered = "Standard <M><L>", score = 4},Fuzzy {original = ("OCaml",1996), rendered = "Oca<m><l>", score = 4}]
 
 > simpleFilter "vm" ["vim", "emacs", "virtual machine"]
 ["vim","virtual machine"]

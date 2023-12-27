@@ -48,6 +48,9 @@ tests = TestList
         (@?=) (head (F.filter "cb" ["cab", "acb"] "" "" id True) )
               (head (F.filter "cb" ["acb"] "" "" id True))
       ]
+    , TestLabel "should respect case when filtering case insensitive" $ from [
+        map F.original (F.filter "abc" ["aBc"] "" "" id False) @?= ["aBc"]
+      ]
     ]
   ]
 
