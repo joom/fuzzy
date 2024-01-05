@@ -1,5 +1,5 @@
 name:                fuzzy
-version:             0.1.0.0
+version:             0.1.1.0
 synopsis:            Filters a list based on a fuzzy string search.
 homepage:            http://github.com/joom/fuzzy
 license:             MIT
