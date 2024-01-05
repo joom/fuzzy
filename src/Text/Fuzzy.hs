@@ -68,7 +68,7 @@ match pattern t pre post extract caseSensitive =
 -- | The function to filter a list of values by fuzzy search on the text extracted from them.
 --
 -- >>> filter "ML" [("Standard ML", 1990),("OCaml",1996),("Scala",2003)] "<" ">" fst False
--- [Fuzzy {original = ("Standard ML",1990), rendered = "Standard <M><L>", score = 4},Fuzzy {original = ("OCaml",1996), rendered = "Oca<m><l>", score = 4}]
+-- [Fuzzy {original = ("Standard ML",1990), rendered = "Standard <M><L>", score = 4},Fuzzy {original = ("OCaml",1996), rendered = "OCa<m><l>", score = 4}]
 {-# INLINABLE filter #-}
 filter :: (T.TextualMonoid s)
        => s        -- ^ Pattern.
