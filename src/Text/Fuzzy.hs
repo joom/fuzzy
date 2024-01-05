@@ -33,7 +33,7 @@ data (T.TextualMonoid s) => Fuzzy t s =
 -- Just ("infinite",3)
 --
 -- >>> match "hsk" ("Haskell",1995) "<" ">" fst False
--- Just ("<h>a<s><k>ell",5)
+-- Just ("<H>a<s><k>ell",5)
 --
 {-# INLINABLE match #-}
 match :: (T.TextualMonoid s)
@@ -51,8 +51,6 @@ match pattern t pre post extract caseSensitive =
     null = not . T.any (const True)
 
     s = extract t
-    (s', pattern') = let f = T.map toLower in
-                     if caseSensitive then (s, pattern) else (f s, f pattern)
 
     (totalScore, currScore, result, pat) =
       T.foldl'
@@ -61,16 +59,16 @@ match pattern t pre post extract caseSensitive =
             case T.splitCharacterPrefix pat of
               Nothing -> (tot, 0, res <> T.singleton c, pat)
               Just (x, xs) ->
-                if x == c then
+                if toLower x == toLower c then
                   let cur' = cur * 2 + 1 in
                   (tot + cur', cur', res <> pre <> T.singleton c <> post, xs)
                 else (tot, 0, res <> T.singleton c, pat)
-        ) (0, 0, mempty, pattern') s'
+        ) (0, 0, mempty, pattern) s
 
 -- | The function to filter a list of values by fuzzy search on the text extracted from them.
 --
 -- >>> filter "ML" [("Standard ML", 1990),("OCaml",1996),("Scala",2003)] "<" ">" fst False
--- [Fuzzy {original = ("Standard ML",1990), rendered = "standard <m><l>", score = 4},Fuzzy {original = ("OCaml",1996), rendered = "oca<m><l>", score = 4}]
+-- [Fuzzy {original = ("Standard ML",1990), rendered = "Standard <M><L>", score = 4},Fuzzy {original = ("OCaml",1996), rendered = "OCa<m><l>", score = 4}]
 {-# INLINABLE filter #-}
 filter :: (T.TextualMonoid s)
        => s        -- ^ Pattern.
